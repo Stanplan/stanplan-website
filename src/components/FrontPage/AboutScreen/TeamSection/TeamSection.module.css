@@ -1,0 +1,13 @@
+.container {
+  margin-top: 20pt;
+  margin-bottom: 20pt;
+  text-align: left;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: horizontal;
+  margin-top: 20pt;
+  margin-bottom: 20pt;
+  text-align: left;
+}

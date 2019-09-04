@@ -1,0 +1,9 @@
+.courseRow {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.required {
+  color: red;
+}

@@ -1,0 +1,22 @@
+.container {
+  padding: 0;
+  margin: 4% 0 4% 0;
+}
+
+.column {
+  display: flex;
+  align-items: center;
+  margin: 5%;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.text {
+  max-width: 90%;
+  text-align: left;
+  font-size: 14pt;
+}

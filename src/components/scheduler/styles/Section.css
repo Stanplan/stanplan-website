@@ -1,0 +1,18 @@
+.horizontalDivider {
+  width: 100%;
+  margin-top: 30pt;
+  margin-bottom: 10pt;
+  border: 2pt solid black;
+}
+
+.instructions {
+  display: block;
+  text-align: center;
+  margin-bottom: 50pt;
+}
+
+.title {
+  display: block;
+  text-align: center;
+  margin-top: 20pt;
+}

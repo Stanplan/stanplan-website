@@ -1,0 +1,34 @@
+@import 'assets/styles/variables.scss';
+
+.copyright {
+  text-align: center;
+  font-size: 12pt;
+}
+
+.footer {
+  padding: 2% 20% 2% 20%;
+  background-color: $background-color;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
+
+.link {
+  margin: 0 0 0 15%;
+  padding: 1% 0 1% 0;
+  text-align: left;
+  color: $primary-color;
+}
+
+.link:hover {
+  color: $secondary-color;
+}
+
+.header {
+  margin: 0 0 0 15%;
+  padding: 1% 0 1% 0;
+  text-align: left;
+}

@@ -1,0 +1,11 @@
+.container {
+  width: 60%;
+  text-align: center;
+  margin: auto;
+}
+
+.question {
+  margin: auto;
+  padding-top: 30pt;
+  padding-bottom: 10pt;
+}

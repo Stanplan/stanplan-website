@@ -1,0 +1,28 @@
+.container {
+  margin-top: 50pt;
+}
+
+.containerDots {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.inactiveDot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  margin: 3px;
+}
+
+.activeDot {
+  height: 25px;
+  width: 25px;
+  background-color: #8c1515;
+  border-radius: 50%;
+  margin: 3px;
+}
+
+.rightFloat {
+  float: right;
+}

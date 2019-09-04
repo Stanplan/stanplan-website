@@ -1,0 +1,14 @@
+.instructions {
+  text-align: left;
+  margin-bottom: 5pt;
+}
+
+.required {
+  color: red;
+}
+
+.subsection {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40pt;
+}

@@ -1,0 +1,74 @@
+@import 'assets/styles/variables.scss';
+
+.card {
+  display: block;
+  background-color: white;
+  width: 100%;
+  padding: 0;
+}
+
+.header {
+  background-color: $secondary-color;
+  color: white;
+}
+
+.body {
+  margin: 0;
+  border: none;
+}
+
+.textArea {
+  padding: 1rem;
+  resize: none;
+  border-width: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.textArea:focus {
+  box-shadow: none !important;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+
+.attachmentButton {
+  display: flex;
+  background-color: white;
+  color: $primary-color;
+  border-color: $primary-color;
+  margin-right: 1%;
+}
+
+.attachmentButton:hover {
+  background-color: $primary-color;
+  color: white;
+  border-color: $primary-color;
+}
+
+.attachmentButton:focus {
+  box-shadow: none !important;
+}
+
+.postButton {
+  display: flex;
+  margin-left: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: $primary-color;
+  color: white;
+  border-color: $primary-color;
+}
+
+.postButton:hover {
+  background-color: $secondary-color;
+  color: white;
+  border-color: $secondary-color;
+}
+
+.postButton:focus {
+  box-shadow: none !important;
+}

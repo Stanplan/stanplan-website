@@ -1,0 +1,68 @@
+@import 'assets/styles/variables.scss';
+
+.container {
+  background-color: $background-color;
+  padding: 0;
+}
+
+.leftColumn {
+  margin-left: 15%;
+}
+
+.rightColumn {
+  display: flex;
+  margin: 15% 14% 15% 6%;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 8%;
+}
+
+.heading {
+  text-align: center;
+  font-size: 1.8vw;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.subheading {
+  text-align: center;
+  font-size: 1.4vw;
+  margin-top: 2%;
+  margin-bottom: 4%;
+}
+
+.signupButton {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5% 18% 1.5% 18%;
+  font-size: 1.6vw;
+  background-color: $primary-color;
+  border: none;
+}
+
+.signupButton:hover {
+  background-color: $secondary-color;
+}
+
+.aboutButton {
+  text-align: center;
+  font-size: 1.4vw;
+  margin-top: 4%;
+}
+
+.link {
+  color: $primary-color !important;
+}
+
+.link:hover {
+  color: $secondary-color !important;
+}
+
+.forgotMyPasswordLink {
+  @extend .link;
+  margin-left: 3%;
+}

@@ -1,0 +1,15 @@
+.addCourseButton {
+  background: #8c1515;
+  border: #871212;
+}
+
+.instructions {
+  text-align: left;
+  margin-bottom: 5pt;
+}
+
+.subsection {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40pt;
+}

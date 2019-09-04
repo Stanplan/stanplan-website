@@ -1,0 +1,37 @@
+@import 'assets/styles/variables.scss';
+
+.container {
+  top: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: $primary-color;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 0;
+}
+
+.brand {
+  color: white !important;
+}
+
+.linkContainer {
+  display: flex;
+  justify-content: center;
+  width: 8rem;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
+  cursor: pointer;
+}
+
+.linkContainer:hover {
+  background-color: $secondary-color;
+}
+
+.link {
+  color: white !important;
+  text-decoration: none !important;
+}

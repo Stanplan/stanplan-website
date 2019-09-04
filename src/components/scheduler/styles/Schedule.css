@@ -1,0 +1,102 @@
+.bottomDivider {
+  margin-top: 30pt;
+  margin-bottom: 10pt;
+  border: 2pt solid black;
+  width: 100%;
+}
+
+.course {
+  display: flex;
+  justify-content: center;
+}
+
+.div {
+  width: 70%;
+  margin: auto;
+}
+
+.horizontalDivider {
+  border-bottom: 2pt solid black;
+}
+
+.downloadButton {
+  background-color: #8c1515;
+  color: white;
+  border: #8c1515;
+}
+
+.downloadButton:hover {
+  background-color: #8c1515;
+  color: white;
+  border: #8c1515;
+}
+
+.downloadButton:focus {
+  background-color: #8c1515;
+  color: white;
+  border: #8c1515;
+}
+
+.downloadButtonContainer {
+  margin-left: 2pt;
+  margin-top: 15pt;
+  margin-bottom: 5pt;
+  margin-right: 2pt;
+  color: #8c1515;
+}
+
+.filler {
+  visibility: hidden;
+}
+
+.logoRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 2;
+}
+
+.quarter {
+  margin-top: 30pt;
+  margin-bottom: 5pt;
+  display: flex;
+  justify-content: center;
+}
+
+.spinner {
+  color: #8c1515;
+  margin-left: 170pt;
+  margin-top: 10pt;
+}
+
+.spinnerContainer {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  display: block;
+  margin: auto;
+}
+
+.statsRow {
+  margin-left: 5pt;
+  margin-top: 5pt;
+  margin-bottom: 5pt;
+}
+
+.unbolded {
+  font-weight: normal;
+}
+
+.units {
+  text-align: center;
+  margin-top: 6pt;
+}
+
+.year {
+  display: flex;
+  align-items: center;
+  margin-left: -10pt;
+}
+
+.yearLabel {
+  text-shadow: 0 0 1em #8c1515;
+}

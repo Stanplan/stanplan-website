@@ -1,0 +1,30 @@
+.dropdownItem:focus {
+  background-color: #8c1515;
+  color: white;
+}
+
+.dropdownRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 30pt;
+  margin-bottom: 40pt;
+}
+
+.dropdownToggle {
+  width: 200pt;
+  background: #8c1515;
+  border: 1pt solid #8c1515;
+}
+
+.instructions {
+  width: 80%;
+  text-align: center;
+  margin: auto;
+  padding-top: 30pt;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 30pt;
+}

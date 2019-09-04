@@ -1,0 +1,41 @@
+@import 'assets/styles/variables.scss';
+
+.card {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 40%;
+  padding: 0;
+}
+
+.topArea {
+  position: absolute;
+  height: 40%;
+  width: 100%;
+  background-color: $default-orange;
+}
+
+.picture {
+  position: relative;
+  height: 100%;
+  margin-top: 20%;
+  margin-left: 5%;
+  z-index: 100;
+  border-style: double;
+  border-width: 2%;
+  border-color: lightgrey;
+}
+
+.text {
+  margin: 65% 5% 5% 5%;
+}
+
+.name {
+  font-size: 14pt;
+  margin-bottom: 0;
+}
+
+.bio {
+  font-size: 11pt;
+  margin-bottom: 0;
+}

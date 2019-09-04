@@ -1,0 +1,47 @@
+@import 'assets/styles/variables.scss';
+
+.container {
+  width: 100%;
+  top: 0;
+  padding: 0;
+  background-color: $primary-color;
+}
+
+.brand {
+  color: white !important;
+}
+
+.column {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.linkContainer {
+  display: flex;
+  justify-content: center;
+  width: 7rem;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
+  cursor: pointer;
+}
+
+.linkContainer:hover {
+  background-color: $secondary-color;
+}
+
+.link {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.searchForm {
+  display: flex;
+}
+
+.searchBar {
+  display: flex;
+  flex: 1;
+  box-shadow: none !important;
+}
