@@ -98,7 +98,7 @@ class IntroSection extends Component {
               </p>
               <Button className={styles.signupButton} onClick={() => this.goToSignupScreen()}>Get Started</Button>
               <p className={styles.aboutButton}>
-                Already have an account? <Link className={styles.link} onClick={() => this.openLoginModal()}>Log in!</Link>
+                Already have an account? <Link to=" " className={styles.link} onClick={() => this.openLoginModal()}>Log in!</Link>
               </p>
               <p className={styles.aboutButton}>
                 <Link to="/about" className={styles.link}>About the StanPlan team</Link>
