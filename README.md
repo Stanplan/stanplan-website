@@ -1,5 +1,7 @@
 # stanplan-website
 
+[![Build Status](https://travis-ci.com/Stanplan/stanplan-website.svg?branch=master)](https://travis-ci.com/Stanplan/stanplan-website)[![Coverage Status](https://coveralls.io/repos/github/Stanplan/stanplan-website/badge.svg)](https://coveralls.io/github/Stanplan/stanplan-website)
+
 ## Getting Started
 
 To get started, perform the following actions:
