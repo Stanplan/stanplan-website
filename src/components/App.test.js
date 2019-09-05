@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from 'redux/store';
 import App from './App';
 
-it('renders without crashing', () => {
+it('Renders Home Screen without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Provider store={store}>
     <App />
