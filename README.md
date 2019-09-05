@@ -1,4 +1,4 @@
-# stanplan-website\
+# stanplan-website
 
 ## Getting Started
 
