@@ -54,7 +54,8 @@ class TeamSection extends Component {
               {title}
             </Card.Text>
             <Card.Text>
-              {`Email: ${email}`}
+              {'Email: '}
+              <i>{email}</i>
             </Card.Text>
           </Card.Body>
         </Card>
