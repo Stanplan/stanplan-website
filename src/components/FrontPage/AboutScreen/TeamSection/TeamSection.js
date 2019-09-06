@@ -20,16 +20,19 @@ class TeamSection extends Component {
         {
           name: "Ricky Grannis-Vu",
           title: "Founder",
+          email: "ricky@stanplan.com",
           image: ricky
         },
         {
           name: "Julia Truitt",
           title: "Founder",
+          email: "julia@stanplan.com",
           image: julia
         },
         {
           name: "Adam Keppler",
           title: "Founder",
+          email: "adam@stanplan.com",
           image: adam
         }
       ]
@@ -39,6 +42,7 @@ class TeamSection extends Component {
   renderCard(cellIndex) {
     let name = this.state.team[cellIndex].name;
     let title = this.state.team[cellIndex].title;
+    let email = this.state.team[cellIndex].email;
     let image = this.state.team[cellIndex].image;
     return (
       <Col>
@@ -48,6 +52,9 @@ class TeamSection extends Component {
             <Card.Title>{name}</Card.Title>
             <Card.Text>
               {title}
+            </Card.Text>
+            <Card.Text>
+              {`Email: ${email}`}
             </Card.Text>
           </Card.Body>
         </Card>
