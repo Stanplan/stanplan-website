@@ -52,7 +52,7 @@ class IntroSection extends Component {
       // TODO: Error handling UI
       if (response.ok === false) {
         response = await response.json();
-        console.log('Error: ' + response.error);
+        console.log('Error: ' + response.errors);
       } else {
         dispatch(loggedIn(this.state.email));
         this.closeLoginModal();
