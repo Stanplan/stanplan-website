@@ -5,6 +5,7 @@ import HomeScreen from 'components/FrontPage/HomeScreen';
 import AboutScreen from 'components/FrontPage/AboutScreen';
 import SignupScreen from 'components/FrontPage/SignupScreen';
 import SuccessScreen from 'components/FrontPage/SignupScreen/SuccessScreen';
+import VerifiedScreen from 'components/FrontPage/SignupScreen/VerifiedScreen';
 import Dashboard from 'components/Dashboard';
 import Page404Screen from 'components/Page404Screen';
 
@@ -22,6 +23,7 @@ function App() {
           <Route path='/about' component={AboutScreen} />
           <Route path='/signup' component={SignupScreen} />
           <Route path='/success' component={SuccessScreen} />
+          <Route path='/verified' component={VerifiedScreen} />
           <Route path='/dashboard' component={Dashboard} />
           <Route component={Page404Screen} />
         </Switch>

@@ -21,10 +21,6 @@ class SuccessScreen extends Component {
             confirm that your email address is correct before you can begin
             using StanPlan.
           </p>
-          <p className={styles.text}>
-            [NOTE: Confirmation emails have been temporarily disabled. You can
-            log in and begin using StanPlan right away.]
-          </p>
         </Row>
         <Footer/>
       </div>

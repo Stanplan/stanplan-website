@@ -56,7 +56,7 @@ class IntroSection extends Component {
       } else {
         dispatch(loggedIn(this.state.email));
         this.closeLoginModal();
-        this.props.history.push('/dashboard')
+        this.props.history.push('/dashboard');
       }
     } catch (e) { // TODO: Error handling UI
       console.log("Unable to login.");
