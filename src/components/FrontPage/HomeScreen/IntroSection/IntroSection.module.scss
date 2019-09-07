@@ -48,6 +48,23 @@
   background-color: $secondary-color;
 }
 
+.loginButton {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  display: inline-block;
+  color: $primary-color;
+}
+
+.loginButton:hover {
+  color: $secondary-color;
+  text-decoration: underline;
+}
+
+.loginButton:focus {
+  outline: none !important;
+}
+
 .aboutButton {
   text-align: center;
   font-size: 1.4vw;
