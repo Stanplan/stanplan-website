@@ -11,7 +11,7 @@ class PostContainer extends Component {
     this.state = {
       firstName: "",
       lastName: "",
-      picture: "",
+      picture: null,
       posts: []
     };
 
@@ -39,7 +39,7 @@ class PostContainer extends Component {
       });
     })
     .catch(error => {
-      console.log('Error: Request for posts failed', error)
+      console.log('Error: Request for posts failed', error);
     });
   }
 
