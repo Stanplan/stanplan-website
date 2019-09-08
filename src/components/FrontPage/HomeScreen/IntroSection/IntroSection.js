@@ -116,7 +116,7 @@ class IntroSection extends Component {
 
         <Modal show={this.state.showLoginModal} onHide={() => this.closeLoginModal()}>
           <Modal.Header closeButton>
-            <Modal.Title>Log In</Modal.Title>
+            <Modal.Title>Log in</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
@@ -137,7 +137,7 @@ class IntroSection extends Component {
               </Form.Group>
             </Form>
             <Form inline>
-              <Button variant="primary" onClick={() => this.login()}>Log In</Button>
+              <Button variant="primary" onClick={() => this.login()}>Log in</Button>
               <Link to="/forgotpassword" className={styles.forgotMyPasswordLink}>Forgot my Password</Link>
             </Form>
           </Modal.Body>
