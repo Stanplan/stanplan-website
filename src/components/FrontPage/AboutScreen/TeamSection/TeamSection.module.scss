@@ -1,7 +1,10 @@
+@import 'assets/styles/variables.scss';
+
 .container {
   margin-top: 20pt;
   margin-bottom: 10%;
   text-align: left;
+  font-family: $default-font-family;
 }
 
 .cardContainer {

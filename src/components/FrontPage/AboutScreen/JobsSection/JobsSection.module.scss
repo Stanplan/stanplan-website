@@ -1,5 +1,8 @@
+@import 'assets/styles/variables.scss';
+
 .container {
   margin-top: 20pt;
   margin-bottom: 20pt;
   text-align: left;
+  font-family: $default-font-family;
 }

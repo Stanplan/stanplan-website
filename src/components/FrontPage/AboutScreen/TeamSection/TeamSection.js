@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import styles from './TeamSection.module.css';
+import styles from './TeamSection.module.scss';
 
 import ricky from 'assets/images/profiles/ricky.jpg';
 import julia from 'assets/images/profiles/julia.jpg';
@@ -92,9 +92,7 @@ class TeamSection extends Component {
   render() {
     return (
       <div className={`container ${styles.container}`}>
-        <h4>
-          Our Team
-        </h4>
+        <h4><strong>Our Team</strong></h4>
         {
           this.renderCards()
         }

@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import styles from './AboutSection.module.css';
+import styles from './AboutSection.module.scss';
 
 class AboutSection extends Component {
 
   render() {
     return (
       <div className={`container ${styles.container}`}>
-        <h2>
-        About Us
-        </h2>
+        <h2><strong>About Us</strong></h2>
         <p>
           StanPlan consolidates the information students need to organize and
           create their four-year course plan into one convenient UI. Our web app
