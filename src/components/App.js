@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AsyncSections from 'components/scheduler/AsyncSections';
 import HomeScreen from 'components/FrontPage/HomeScreen';
 import AboutScreen from 'components/FrontPage/AboutScreen';
+import PricingScreen from 'components/FrontPage/PricingScreen';
 import LoginScreen from 'components/FrontPage/LoginScreen';
 import SignupScreen from 'components/FrontPage/SignupScreen';
 import SuccessScreen from 'components/FrontPage/SignupScreen/SuccessScreen';
@@ -22,6 +23,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={HomeScreen} />
           <Route path='/about' component={AboutScreen} />
+          <Route path='/pricing' component={PricingScreen} />
           <Route path='/login' component={LoginScreen} />
           <Route path='/signup' component={SignupScreen} />
           <Route path='/success' component={SuccessScreen} />
