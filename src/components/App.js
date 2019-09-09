@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AsyncSections from 'components/scheduler/AsyncSections';
 import HomeScreen from 'components/FrontPage/HomeScreen';
 import AboutScreen from 'components/FrontPage/AboutScreen';
+import LoginScreen from 'components/FrontPage/LoginScreen';
 import SignupScreen from 'components/FrontPage/SignupScreen';
 import SuccessScreen from 'components/FrontPage/SignupScreen/SuccessScreen';
 import VerifiedScreen from 'components/FrontPage/SignupScreen/VerifiedScreen';
@@ -21,6 +22,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={HomeScreen} />
           <Route path='/about' component={AboutScreen} />
+          <Route path='/login' component={LoginScreen} />
           <Route path='/signup' component={SignupScreen} />
           <Route path='/success' component={SuccessScreen} />
           <Route path='/verified' component={VerifiedScreen} />

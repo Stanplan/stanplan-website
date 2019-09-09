@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import courseSelection from 'assets/images/courseSelection.png';
 import schedule from 'assets/images/schedule.png';
 import majorSelection from 'assets/images/majorSelection.png';
-import styles from './WhatWeDoSection.module.css';
+import styles from './WhatWeDoSection.module.scss';
 
 // TODO: Convert all Containers to div classNames with container-fluid (including first one which is WIP)
 class WhatWeDoSection extends Component {
@@ -12,11 +12,6 @@ class WhatWeDoSection extends Component {
   render() {
     return (
       <div className={`container-fluid ${styles.container}`}>
-        <Row className="justify-content-center">
-          <h1>
-            What We Do
-          </h1>
-        </Row>
         <Row>
           <Col className={styles.column}>
             <div className={`container-fluid ${styles.image}`}>

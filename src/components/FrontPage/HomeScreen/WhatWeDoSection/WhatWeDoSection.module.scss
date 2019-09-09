@@ -1,3 +1,5 @@
+@import 'assets/styles/variables.scss';
+
 .container {
   padding: 0;
   margin: 4% 0 4% 0;
@@ -18,5 +20,5 @@
 .text {
   max-width: 90%;
   text-align: left;
-  font-size: 14pt;
+  font: 14pt $default-font-family;
 }

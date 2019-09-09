@@ -11,7 +11,7 @@ class AboutScreen extends Component {
   render() {
     return (
       <div className={`container-fluid ${styles.container}`}>
-        <Navbar/>
+        <Navbar variant='grey'/>
         <AboutSection/>
         <JobsSection/>
         <TeamSection/>

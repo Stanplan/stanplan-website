@@ -1,19 +1,14 @@
 @import 'assets/styles/variables.scss';
 
 .container {
-  top: 0;
+  position: relative;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  z-index: 1;
   padding: 0;
-}
-
-.navbar {
-  background-color: $primary-color;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-right: 0;
-}
-
-.brand {
-  color: white !important;
+  margin-left: 15%;
 }
 
 .linkContainer {
@@ -27,11 +22,22 @@
   cursor: pointer;
 }
 
-.linkContainer:hover {
-  background-color: $secondary-color;
-}
-
 .link {
+  font: 1vw $default-font-family;
   color: white !important;
   text-decoration: none !important;
+}
+
+.link:hover {
+  color: $light-grey !important;
+}
+
+.linkGrey {
+  font: 1vw $default-font-family;
+  color: $grey !important;
+  text-decoration: none !important;
+}
+
+.linkGrey:hover {
+  color: $dark-grey !important;
 }

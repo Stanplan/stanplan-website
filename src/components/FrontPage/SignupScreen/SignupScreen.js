@@ -121,77 +121,139 @@ class SignupScreen extends Component {
     return (
       <div className={`container-fluid ${styles.container}`}>
         <Navbar/>
-        <div className={`container`}>
-          <Row className='justify-content-center'>
-            <h2 className={styles.heading}>
-              Create your StanPlan Account
-            </h2>
-          </Row>
-          <Form className={styles.form}>
-            <Form.Group controlid="university">
-              <Form.Label>University</Form.Label>
-              <Form.Control as="select"
-                onChange={ (e) => this.updateUniversity(e) }
-              >
-                <option disabled selected>I go to...</option>
-                <option>Stanford University</option>
-              </Form.Control>
-            </Form.Group>
-            <Form.Row>
-              <Form.Label className={styles.nameLabel}>Name</Form.Label>
-            </Form.Row>
-            <Form.Row>
-              <Form.Group as={Col} controlId="firstname">
-                <Form.Control type="text" placeholder="First"
-                  onChange={ (e) => this.updateFirstName(e) }
+        <Row>
+          <Col>
+            <div className={styles.infoBox}>
+              <p className={styles.infoHeadingLarge}>
+                {`You're almost there!`}<br/>
+              </p>
+              <p className={styles.infoHeading}>
+                Check out what our customers love about StanPlan...
+              </p>
+              <Row>
+                <Col sm={2}>
+                  <i className={`material-icons ${styles.infoIcon}`}>calendar_today</i>
+                </Col>
+                <Col sm={10}>
+                  <p className={styles.infoSubheading}>
+                    Scheduling
+                  </p>
+                  <p className={styles.infoText}>
+                    Select courses through an easy interface. Our algorithm will automatically generate your optimal schedule.
+                  </p>
+                </Col>
+              </Row>
+              <Row>
+                <Col sm={2}>
+                  <i className={`material-icons ${styles.infoIcon}`}>search</i>
+                </Col>
+                <Col sm={10}>
+                  <p className={styles.infoSubheading}>
+                    Recommendations
+                  </p>
+                  <p className={styles.infoText}>
+                    Receive personalized course recommendations and guidance in selecting a major.
+                  </p>
+                </Col>
+              </Row>
+              <Row>
+                <Col sm={2}>
+                  <i className={`material-icons ${styles.infoIcon}`}>group</i>
+                </Col>
+                <Col sm={10}>
+                  <p className={styles.infoSubheading}>
+                    Friends
+                  </p>
+                  <p className={styles.infoText}>
+                    Connect with your friends and see what courses they enrolled in.
+                  </p>
+                </Col>
+              </Row>
+              <Row>
+                <Col sm={2}>
+                  <i className={`material-icons ${styles.infoIcon}`}>save_alt</i>
+                </Col>
+                <Col sm={10}>
+                  <p className={styles.infoSubheading}>
+                    Importing / Exporting
+                  </p>
+                  <p className={styles.infoText}>
+                    Import your course list from your transcript. Export your course list to Microsoft Excel, Google Sheets or as a CSV file.
+                  </p>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+          <Col>
+            <Form className={styles.form}>
+              <h3 className={styles.heading}>
+                Create an account
+              </h3>
+              <Form.Group controlid="university">
+                <Form.Label>University</Form.Label>
+                <Form.Control as="select"
+                  onChange={ (e) => this.updateUniversity(e) }
+                >
+                  <option disabled selected>I go to...</option>
+                  <option>Stanford University</option>
+                </Form.Control>
+              </Form.Group>
+              <Form.Row>
+                <Form.Label className={styles.nameLabel}>Name</Form.Label>
+              </Form.Row>
+              <Form.Row>
+                <Form.Group as={Col} controlId="firstname">
+                  <Form.Control type="text" placeholder="First"
+                    onChange={ (e) => this.updateFirstName(e) }
+                  />
+                </Form.Group>
+                <Form.Group as={Col} controlId="lastname">
+                  <Form.Control type="text" placeholder="Last"
+                    onChange={ (e) => this.updateLastName(e) }
+                  />
+                </Form.Group>
+              </Form.Row>
+              <Form.Group controlid="gender">
+                <Form.Label>Gender</Form.Label>
+                <Form.Control as="select"
+                  onChange={ (e) => this.updateGender(e) }
+                >
+                  <option disabled selected>I am...</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Non-binary</option>
+                  <option>Other</option>
+                  <option>Prefer not to say</option>
+                </Form.Control>
+              </Form.Group>
+              <Form.Group controlId="email">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email"
+                  onChange={ (e) => this.updateEmail(e) }
                 />
               </Form.Group>
-              <Form.Group as={Col} controlId="lastname">
-                <Form.Control type="text" placeholder="Last"
-                  onChange={ (e) => this.updateLastName(e) }
+              <Form.Group controlId="password">
+                <Form.Label>Create a password</Form.Label>
+                <Form.Control type="password"
+                  onChange={ (e) => this.updatePassword(e) }
                 />
               </Form.Group>
-            </Form.Row>
-            <Form.Group controlId="email">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email"
-                onChange={ (e) => this.updateEmail(e) }
-              />
-            </Form.Group>
-            <Form.Group controlId="password">
-              <Form.Label>Create a password</Form.Label>
-              <Form.Control type="password"
-                onChange={ (e) => this.updatePassword(e) }
-              />
-            </Form.Group>
-            <Form.Group controlId="repeatPassword">
-              <Form.Label>Confirm your password</Form.Label>
-              <Form.Control type="password"
-                onChange={ (e) => this.updateRepeatPassword(e) }
-              />
-            </Form.Group>
-            <Form.Group controlid="gender">
-              <Form.Label>Gender</Form.Label>
-              <Form.Control as="select"
-                onChange={ (e) => this.updateGender(e) }
-              >
-                <option disabled selected>I am...</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Non-binary</option>
-                <option>Other</option>
-                <option>Prefer not to say</option>
-              </Form.Control>
-            </Form.Group>
-            <Form.Group controlid="phone">
-              <Form.Label>Mobile phone (Optional)</Form.Label>
-              <Form.Control type='tel'
-                onChange={ (e) => this.updatePhone(e) }
-              />
-            </Form.Group>
-            <Button className={styles.finishButton} onClick={ () => this.createAccount() }>Finish</Button>
-          </Form>
-        </div>
+              <Form.Group controlId="repeatPassword">
+                <Form.Label>Confirm your password</Form.Label>
+                <Form.Control type="password"
+                  onChange={ (e) => this.updateRepeatPassword(e) }
+                />
+              </Form.Group>
+              <Form.Group controlid="phone">
+                <Form.Label>Mobile phone (Optional)</Form.Label>
+                <Form.Control type='tel'
+                  onChange={ (e) => this.updatePhone(e) }
+                />
+              </Form.Group>
+              <Button className={styles.finishButton} onClick={ () => this.createAccount() }>Finish</Button>
+            </Form>
+          </Col>
+        </Row>
         <Footer/>
       </div>
     );

@@ -11,6 +11,8 @@ class Footer extends Component {
   render() {
     return (
       <div className={styles.footer}>
+        <div className={styles.background1}></div>
+        <div className={styles.background2}></div>
         <Row>
           <Col>
             <Container className={styles.logo}>

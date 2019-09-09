@@ -1,36 +1,59 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Navbar from 'react-bootstrap/Navbar';
 import styles from './Navbar.module.scss';
 
-// Have to name this Navbar_Stanplan internally because Navbar
-// is already defined for react-bootstrap
-class Navbar_Stanplan extends Component {
+const VARIANTS = {
+  default: 'default',
+  grey: 'grey'
+};
+
+class Navbar extends Component {
+
+  constructor (props) {
+    super(props);
+
+    let variant = VARIANTS.default;
+    if (props.variant === 'grey' || props.variant === 'gray') {
+      variant = VARIANTS.grey;
+    }
+
+    this.state = {
+      variant: variant
+    };
+  }
+
   render() {
+    let linkStyle = styles.link;
+    if (this.state.variant === VARIANTS.grey) {
+      linkStyle = styles.linkGrey;
+    }
+
     return (
       <div className={`container-fluid ${styles.container}`}>
-        <Navbar className={styles.navbar}>
-          <Link to="/">
-            <Navbar.Brand className={styles.brand}>StanPlan</Navbar.Brand>
-          </Link>
-          <div className='d-flex justify-content-start align-items-center w-100 h-100'>
-            <div className={styles.linkContainer}>
-              <Link to="/about" className={styles.link}>About</Link>
-            </div>
-            <div className={styles.linkContainer}>
-              <Link to="/pricing" className={styles.link}>Pricing</Link>
-            </div>
-            <div className={styles.linkContainer}>
-              <Link to="/demo" className={styles.link}>Get a Demo</Link>
-            </div>
-            <div className={styles.linkContainer}>
-              <Link to="/help" className={styles.link}>Help</Link>
-            </div>
-          </div>
-        </Navbar>
+        <div className={styles.linkContainer}>
+          <Link to="/" className={linkStyle}>StanPlan</Link>
+        </div>
+        <div className={styles.linkContainer}>
+          <Link to="/about" className={linkStyle}>About</Link>
+        </div>
+        <div className={styles.linkContainer}>
+          <Link to="/pricing" className={linkStyle}>Pricing</Link>
+        </div>
+        <div className={styles.linkContainer}>
+          <Link to="/demo" className={linkStyle}>Get a demo</Link>
+        </div>
+        <div className={styles.linkContainer}>
+          <Link to="/help" className={linkStyle}>Help</Link>
+        </div>
+        <div className={styles.linkContainer}>
+          <Link to="/signup" className={linkStyle}>Sign up</Link>
+        </div>
+        <div className={styles.linkContainer}>
+          <Link to="/login" className={linkStyle}>Log in</Link>
+        </div>
       </div>
     );
   }
 }
 
-export default Navbar_Stanplan;
+export default Navbar;

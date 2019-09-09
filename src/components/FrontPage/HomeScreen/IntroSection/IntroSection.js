@@ -1,108 +1,42 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loggedIn } from 'redux/actions';
 import { withRouter } from "react-router-dom";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Navbar from 'components/FrontPage/Navbar';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import logo from 'assets/images/Logo.png';
 import styles from './IntroSection.module.scss';
 
 class IntroSection extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showLoginModal: false,
-      email: '',
-      password: ''
-    };
-  }
-
-  closeLoginModal() {
-    this.setState({ showLoginModal: false });
-  }
-
-  openLoginModal() {
-    this.setState({ showLoginModal: true });
-  }
-
-  async login() {
-    const { dispatch } = this.props;
-    try {
-      var response = await fetch(process.env.REACT_APP_SERVER_URL + "/login", {
-        method: 'post',
-        mode: 'cors',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: this.state.email,
-          password: this.state.password
-        })
-      })
-      .catch(error => {
-        console.log('Error: Request to login failed', error)
-      });
-
-      // TODO: Error handling UI
-      if (response.ok === false) {
-        response = await response.json();
-        console.log('Error: ' + response.errors);
-      } else {
-        dispatch(loggedIn(this.state.email));
-        this.closeLoginModal();
-        this.props.history.push('/dashboard');
-      }
-    } catch (e) { // TODO: Error handling UI
-      console.log("Unable to login.");
-    }
-  }
-
-  updateEmail(e) {
-    if (e.target.value === null) {
-      return;
-    }
-    this.setState({ email: e.target.value });
-  }
-
-  updatePassword(e) {
-    if (e.target.value === null) {
-      return;
-    }
-    this.setState({ password: e.target.value });
-  }
 
   goToSignupScreen() {
     this.props.history.push('/signup');
   }
 
+  goToDemoScreen() {
+    this.props.history.push('/demo');
+  }
+
   render() {
     return (
       <div className={`container-fluid ${styles.container}`}>
+        <div className={styles.background}></div>
+        <Navbar/>
         <Row>
           <Col>
             <div className={styles.leftColumn}>
-              <div className={`container-fluid ${styles.logo}`}>
-                <img src={logo} alt="StanPlan Logo" width="70%" height="70%"/>
-              </div>
               <p className={styles.heading}>
                 The smart college planner
               </p>
               <p className={styles.subheading}>
-                StanPlan turns course selection into a smooth and easy experience.
+                Select your courses through a modern web interface,
+                automatically generate your optimal course schedule and export
+                your schedule to Microsoft Excel or Google Sheets.
               </p>
-              <Button className={styles.signupButton} onClick={() => this.goToSignupScreen()}>Get Started</Button>
-              <p className={styles.aboutButton}>
-                Already have an account? <button className={styles.loginButton} onClick={() => this.openLoginModal()}>Log in!</button>
-              </p>
-              <p className={styles.aboutButton}>
-                <Link to="/about" className={styles.link}>About the StanPlan team</Link>
-              </p>
+              <div>
+                <Button className={styles.signupButton} onClick={() => this.goToSignupScreen()}>Sign up</Button>
+                <Button className={styles.signupButton} onClick={() => this.goToDemoScreen()}>Get a demo</Button>
+              </div>
             </div>
           </Col>
           <Col>
@@ -113,35 +47,6 @@ class IntroSection extends Component {
             </div>
           </Col>
         </Row>
-
-        <Modal show={this.state.showLoginModal} onHide={() => this.closeLoginModal()}>
-          <Modal.Header closeButton>
-            <Modal.Title>Log in</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <Form.Group controlId="email">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email"
-                  onChange={ (e) => this.updateEmail(e) }
-                />
-              </Form.Group>
-              <Form.Group controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password"
-                  onChange={ (e) => this.updatePassword(e) }
-                />
-              </Form.Group>
-              <Form.Group controlId="rememberMe">
-                <Form.Check type="checkbox" label="Keep me logged in" />
-              </Form.Group>
-            </Form>
-            <Form inline>
-              <Button variant="primary" onClick={() => this.login()}>Log in</Button>
-              <Link to="/forgotpassword" className={styles.forgotMyPasswordLink}>Forgot my Password</Link>
-            </Form>
-          </Modal.Body>
-        </Modal>
       </div>
     );
   }

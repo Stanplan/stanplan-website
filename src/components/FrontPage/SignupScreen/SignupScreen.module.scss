@@ -4,16 +4,53 @@
   max-width: 100%;
   padding-left: 0;
   padding-right: 0;
+  background-image: linear-gradient($primary-color, $secondary-color);
 }
 
-.heading {
-  margin-top: 5%;
+.infoBox {
+  margin: 15% 17% 20% 28%;
+}
+
+.infoIcon {
+  color: white;
+  font-size: 36px;
+}
+
+.infoHeadingLarge {
+  color: white;
+  margin-bottom: 6%;
+  font: 2.4vw $default-font-family;
+  font-weight: bold;
+}
+
+.infoHeading {
+  margin-bottom: 6%;
+  color: white;
+  font: 1.8vw $default-font-family;
+  font-weight: bold;
+}
+
+.infoSubheading {
+  color: white;
+  font: 1.6vw $default-font-family;
+  font-weight: bold;
+}
+
+.infoText {
+  color: white;
+  font: 1vw $default-font-family;
 }
 
 .form {
-  background-color: $background-color;
-  padding: 5% 5% 8% 5%;
-  margin: 5% 0 5% 0;
+  background-color: white;
+  padding: 5% 5% 5% 5%;
+  margin: 10% 15% 20% 15%;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 4%;
 }
 
 .nameLabel {
@@ -21,9 +58,8 @@
 }
 
 .finishButton {
-  float: right;
   margin-top: 2%;
-  padding: 1% 4% 1% 4%;
+  padding: 2% 6% 2% 6%;
   background-color: $primary-color;
   border: none;
 }

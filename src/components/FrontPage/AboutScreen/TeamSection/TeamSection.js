@@ -8,7 +8,7 @@ import ricky from 'assets/images/profiles/ricky.jpg';
 import julia from 'assets/images/profiles/julia.jpg';
 import adam from 'assets/images/profiles/adam.svg';
 
-const ROW_LENGTH = 4;
+const ROW_LENGTH = 3;
 
 class TeamSection extends Component {
 

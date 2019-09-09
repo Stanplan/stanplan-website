@@ -52,7 +52,7 @@ class VerifiedScreen extends Component {
   render() {
     return (
       <div className={`container-fluid ${styles.container}`}>
-        <Navbar/>
+        <Navbar variant='grey'/>
         <Row className='justify-content-center'>
           <h2 className={styles.header}>
             Congratulations! Your account is now activated.
