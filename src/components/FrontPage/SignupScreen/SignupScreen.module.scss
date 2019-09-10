@@ -57,6 +57,15 @@
   margin-left: 0.5%;
 }
 
+.tosLink {
+  color: $primary-color;
+  cursor: pointer;
+}
+
+.tosLink:hover {
+  text-decoration: underline;
+}
+
 .finishButton {
   margin-top: 2%;
   padding: 2% 6% 2% 6%;

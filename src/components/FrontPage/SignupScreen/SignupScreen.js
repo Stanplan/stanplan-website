@@ -20,7 +20,8 @@ class SignupScreen extends Component {
       lastName: '',
       gender: '',
       university: '',
-      phone: ''
+      phone: '',
+      tosAgree: false
     };
   }
 
@@ -28,6 +29,10 @@ class SignupScreen extends Component {
     if (this.state.password !== this.state.repeatPassword) {
       return;
     }
+    if (!this.state.tosAgree) {
+      return;
+    }
+    
     try {
       var response = await fetch(process.env.REACT_APP_SERVER_URL + "/signup", {
         method: 'post',
@@ -115,6 +120,10 @@ class SignupScreen extends Component {
       return;
     }
     this.setState({ university: e.target.value });
+  }
+
+  toggleTosCheckbox() {
+    this.setState({ tosAgree: !this.state.tosAgree });
   }
 
   render() {
@@ -250,6 +259,16 @@ class SignupScreen extends Component {
                   onChange={ (e) => this.updatePhone(e) }
                 />
               </Form.Group>
+              <Form.Row>
+                <Col sm={1}>
+                  <Form.Group controlId="tosCheckbox">
+                    <Form.Check type="checkbox" onClick={ () => this.toggleTosCheckbox() }/>
+                  </Form.Group>
+                </Col>
+                <Col sm={11}>
+                  <p> Click here to indicate that you have read and agree to the terms outlined in the <span className={styles.tosLink}>StanPlan Terms of Service</span>.</p>
+                </Col>
+              </Form.Row>
               <Button className={styles.finishButton} onClick={ () => this.createAccount() }>Finish</Button>
             </Form>
           </Col>
