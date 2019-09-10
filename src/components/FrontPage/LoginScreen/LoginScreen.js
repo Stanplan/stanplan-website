@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { loggedIn } from 'redux/actions';
 import Navbar from 'components/FrontPage/Navbar';
 import Footer from 'components/FrontPage/Footer';
@@ -65,6 +65,14 @@ class LoginScreen extends Component {
     this.setState({ password: e.target.value });
   }
 
+  goToSignupScreen() {
+    this.props.history.push('/signup');
+  }
+
+  goToForgotPasswordScreen() {
+    this.props.history.push('/forgotpassword');
+  }
+
   render() {
     return (
       <div className={`container-fluid ${styles.container}`}>
@@ -88,8 +96,14 @@ class LoginScreen extends Component {
           <Form.Group controlId="rememberMe">
             <Form.Check type="checkbox" label="Keep me logged in" />
           </Form.Group>
-          <Button className={styles.loginButton} onClick={() => this.login()}>Log in</Button>
-          <Link to="/forgotpassword" className={styles.forgotMyPassword}>Forgot your password?</Link>
+          <div className={styles.loginPanel}>
+            <Button className={styles.loginButton} onClick={() => this.login()}>Log in</Button>
+            <p onClick={() => this.goToForgotPasswordScreen()} className={styles.forgotPassword}>Forgot your password?</p>
+          </div>
+          <p className={styles.signupText}>
+            {`Don't have an account yet? `}
+            <span onClick={() => this.goToSignupScreen()} className={styles.signupLink}>Sign up now!</span>
+          </p>
         </Form>
         <Footer/>
       </div>
@@ -97,4 +111,4 @@ class LoginScreen extends Component {
   }
 }
 
-export default LoginScreen;
+export default withRouter(LoginScreen);
