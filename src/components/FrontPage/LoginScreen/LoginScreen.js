@@ -43,7 +43,6 @@ class LoginScreen extends Component {
         console.log('Error: ' + response.errors);
       } else {
         dispatch(loggedIn(this.state.email));
-        this.closeLoginModal();
         this.props.history.push('/dashboard');
       }
     } catch (e) { // TODO: Error handling UI
