@@ -88,7 +88,10 @@ class LoginScreen extends Component {
             />
           </Form.Group>
           <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
+            <div className={styles.passwordLabelPanel}>
+              <Form.Label className={styles.passwordlabel}>Password</Form.Label>
+              <p onClick={() => this.goToForgotPasswordScreen()} className={styles.forgotPassword}>Forgot your password?</p>
+            </div>
             <Form.Control type="password"
               onChange={ (e) => this.updatePassword(e) }
             />
@@ -96,10 +99,7 @@ class LoginScreen extends Component {
           <Form.Group controlId="rememberMe">
             <Form.Check type="checkbox" label="Keep me logged in" />
           </Form.Group>
-          <div className={styles.loginPanel}>
-            <Button className={styles.loginButton} onClick={() => this.login()}>Log in</Button>
-            <p onClick={() => this.goToForgotPasswordScreen()} className={styles.forgotPassword}>Forgot your password?</p>
-          </div>
+          <Button className={styles.loginButton} onClick={() => this.login()}>Log in</Button>
           <p className={styles.signupText}>
             {`Don't have an account yet? `}
             <span onClick={() => this.goToSignupScreen()} className={styles.signupLink}>Sign up now!</span>
