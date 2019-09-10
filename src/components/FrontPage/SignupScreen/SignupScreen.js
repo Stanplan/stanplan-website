@@ -178,7 +178,7 @@ class SignupScreen extends Component {
                     Importing / Exporting
                   </p>
                   <p className={styles.infoText}>
-                    Import your course list from your transcript. Export your course list to Microsoft Excel, Google Sheets or as a CSV file.
+                    Import your course list from your transcript. Export your schedule to Microsoft Excel, Google Sheets or as a CSV file.
                   </p>
                 </Col>
               </Row>
