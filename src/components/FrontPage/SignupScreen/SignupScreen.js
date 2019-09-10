@@ -32,7 +32,7 @@ class SignupScreen extends Component {
     if (!this.state.tosAgree) {
       return;
     }
-    
+
     try {
       var response = await fetch(process.env.REACT_APP_SERVER_URL + "/signup", {
         method: 'post',
@@ -242,11 +242,12 @@ class SignupScreen extends Component {
                 />
               </Form.Group>
               <Form.Group controlId="password">
-                <Form.Label>Create a password</Form.Label>
+                <Form.Label>Create a password *</Form.Label>
                 <Form.Control type="password"
                   onChange={ (e) => this.updatePassword(e) }
                 />
               </Form.Group>
+              <p className={styles.passwordInfo}> * Must be at least six characters long</p>
               <Form.Group controlId="repeatPassword">
                 <Form.Label>Confirm your password</Form.Label>
                 <Form.Control type="password"
