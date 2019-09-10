@@ -248,6 +248,7 @@ class SignupScreen extends Component {
                 />
               </Form.Group>
               <p className={styles.passwordInfo}> * Must be at least six characters long</p>
+              <p className={styles.passwordInfoEnd}> * Cannot be a common password (123456, password, etc.)</p>
               <Form.Group controlId="repeatPassword">
                 <Form.Label>Confirm your password</Form.Label>
                 <Form.Control type="password"
