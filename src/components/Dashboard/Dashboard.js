@@ -12,6 +12,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className={`container-fluid ${styles.container}`}>
+        <div className={styles.background}></div>
         <Navbar/>
         <Row className={styles.body}>
           <Col xs={2} className={styles.column}>
