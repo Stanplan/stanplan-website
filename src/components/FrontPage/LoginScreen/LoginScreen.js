@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import { loggedIn } from 'redux/actions';
 import Navbar from 'components/FrontPage/Navbar';
@@ -46,7 +47,7 @@ class LoginScreen extends Component {
         this.props.history.push('/dashboard');
       }
     } catch (e) { // TODO: Error handling UI
-      console.log("Unable to login.");
+      console.log("Login error at fetch: " + e);
     }
   }
 
@@ -110,4 +111,4 @@ class LoginScreen extends Component {
   }
 }
 
-export default withRouter(LoginScreen);
+export default withRouter(connect()(LoginScreen));

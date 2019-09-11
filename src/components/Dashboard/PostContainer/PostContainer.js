@@ -12,14 +12,17 @@ class PostContainer extends Component {
       firstName: "",
       lastName: "",
       picture: null,
-      posts: []
+      posts: [],
+      lastDownloadTime: null
     };
 
     this.getPosts = this.getPosts.bind(this);
   }
 
   getPosts() {
-    fetch(process.env.REACT_APP_SERVER_URL + "/posts", {
+    let downloadTime = new Date();
+
+    fetch(process.env.REACT_APP_SERVER_URL + "/posts?lastDownloadTime=" + this.state.lastDownloadTime, {
       method: "get",
       mode: "cors",
       credentials: "include",
@@ -31,12 +34,20 @@ class PostContainer extends Component {
       return response.json();
     })
     .then(json => {
-      this.setState({
-        firstName: json.firstName,
-        lastName: json.lastName,
-        picture: json.picture,
-        posts: json.posts
-      });
+      if (json.posts.length > 0) {
+        let posts = this.state.posts;
+        for (let i = 0; i < json.posts.length; i++) {
+          posts.push(json.posts[i]);
+        }
+
+        this.setState({
+          firstName: json.firstName,
+          lastName: json.lastName,
+          picture: json.picture,
+          posts: posts
+        });
+      }
+      this.setState({ lastDownloadTime: downloadTime });
     })
     .catch(error => {
       console.log('Error: Request for posts failed', error);
@@ -44,8 +55,8 @@ class PostContainer extends Component {
   }
 
   componentDidMount() {
-    this.getPosts();
-    this.timer = setInterval(this.getPosts, 1000);
+    //this.getPosts();
+    //this.timer = setInterval(this.getPosts, 5000);
   }
 
   componentWillUnmount() {
