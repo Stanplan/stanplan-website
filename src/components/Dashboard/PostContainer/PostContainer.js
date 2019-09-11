@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Post from './Post';
+import { getProfilePicture } from 'utils/ImageLoader';
 import styles from './PostContainer.module.scss';
 
 class PostContainer extends Component {
@@ -9,6 +10,7 @@ class PostContainer extends Component {
     super(props);
 
     this.state = {
+      id: null,
       firstName: "",
       lastName: "",
       picture: null,
@@ -41,10 +43,14 @@ class PostContainer extends Component {
         }
 
         this.setState({
+          id: json.id,
           firstName: json.firstName,
           lastName: json.lastName,
-          picture: json.picture,
           posts: posts
+        });
+
+        getProfilePicture(this.state.id).then(picture => {
+          this.setState({ picture: picture });
         });
       }
       this.setState({ lastDownloadTime: downloadTime });
@@ -55,8 +61,8 @@ class PostContainer extends Component {
   }
 
   componentDidMount() {
-    //this.getPosts();
-    //this.timer = setInterval(this.getPosts, 5000);
+    this.getPosts();
+    this.timer = setInterval(this.getPosts, 1000);
   }
 
   componentWillUnmount() {
@@ -79,6 +85,7 @@ class PostContainer extends Component {
       let id = this.state.id;
       let name = this.state.firstName + " " + this.state.lastName;
       let picture = this.state.picture;
+      console.log(picture);
       let text = this.state.posts[i].text;
       let date = new Date(this.state.posts[i].timestamp);
 

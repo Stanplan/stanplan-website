@@ -18,7 +18,7 @@ class Post extends Component {
     return (
       <Card className={styles.post}>
         <Card.Body>
-          <Image roundedCircle src={require(`assets/images/profiles/${this.props.picture}`)} className={styles.picture}/>
+          <Image roundedCircle src={this.props.picture} className={styles.picture}/>
           <div className={styles.headerText}>
             <p className={styles.name}>{this.props.person}</p>
             <p className={styles.time}>{this.props.time}</p>

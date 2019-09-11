@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
+import { getProfilePicture } from 'utils/ImageLoader';
 import styles from './Profile.module.scss';
 
 class Profile extends Component {
@@ -9,9 +10,10 @@ class Profile extends Component {
     super(props);
 
     this.state = {
+      id: null,
       name: null,
       bio: null,
-      profile: null
+      picture: null
     }
   }
 
@@ -32,10 +34,16 @@ class Profile extends Component {
       return response.json();
     })
     .then(json => {
+      let bio = json.bio;
+      if (bio === null) bio = '';
       this.setState({
+        id: json.id,
         name: json.name,
-        bio: json.bio,
-        picture: json.picture
+        bio: bio
+      });
+
+      getProfilePicture(this.state.id).then(picture => {
+        this.setState({ picture: picture });
       });
     })
     .catch(error => {
@@ -45,7 +53,6 @@ class Profile extends Component {
 
   render() {
     let { name, bio, picture } = this.state;
-    if (bio === null) bio = '';
     return (
       <Card className={styles.card}>
         <div className={styles.topArea}>
