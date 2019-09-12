@@ -80,7 +80,7 @@ class CourseRecs extends Component {
     return (
       <Card className={styles.card}>
         <Card.Header className={styles.header}>
-          Popular among friends
+          Popular with your friends
         </Card.Header>
         <ListGroup variant="flush">
           {

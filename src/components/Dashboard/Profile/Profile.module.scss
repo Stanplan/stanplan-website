@@ -8,24 +8,24 @@
 
 .topArea {
   position: absolute;
-  height: 40%;
+  height: 12rem;
   width: 100%;
   background-color: $default-orange;
 }
 
 .picture {
   position: relative;
-  height: 100%;
-  margin-top: 18%;
+  height: 10rem;
+  margin-top: 7rem;
   margin-left: 5%;
   z-index: 1;
-  border-style: double;
-  border-width: 2%;
-  border-color: lightgrey;
+  border: 0.3rem solid white;
 }
 
 .text {
-  margin: 60% 5% 5% 5%;
+  margin: 18rem 5% 5% 5%;
+  padding-bottom: 5%;
+  border-bottom: 1px solid lightgrey;
 }
 
 .name {
@@ -36,4 +36,24 @@
 .bio {
   font-size: 11pt;
   margin-bottom: 0;
+}
+
+.profileFields {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.field {
+  font-size: 11pt;
+  margin-bottom: 0.6rem;
+}
+
+.link {
+  color: $primary-color;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: $primary-color-action;
+  text-decoration: underline;
 }

@@ -85,7 +85,6 @@ class PostContainer extends Component {
       let id = this.state.id;
       let name = this.state.firstName + " " + this.state.lastName;
       let picture = this.state.picture;
-      console.log(picture);
       let text = this.state.posts[i].text;
       let date = new Date(this.state.posts[i].timestamp);
 
