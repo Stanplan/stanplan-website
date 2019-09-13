@@ -36,15 +36,15 @@ class CourseRecs extends Component {
   renderFriendsText(rec) {
     if (rec.friends.length > 3) {
       return (
-        <p className={styles.friends}>Taken by <span>{rec.friends[0]}</span>, <span>{rec.friends[1]}</span> and <span>{(rec.friends.length - 2)}</span> more friends</p>
+        <p className={styles.friends}>Taken by <span>{rec.friends[0]}, {rec.friends[1]} and {(rec.friends.length - 2)} more friends</span></p>
       );
     } else if (rec.friends.length === 3) {
       return (
-        <p className={styles.friends}>Taken by <span>{rec.friends[0]}</span>, <span>{rec.friends[1]}</span> and <span>{1}</span> more friend</p>
+        <p className={styles.friends}>Taken by <span>{rec.friends[0]}, {rec.friends[1]} and {1} more friend</span></p>
       );
     } else if (rec.friends.length === 2) {
       return (
-        <p className={styles.friends}>Taken by <span>{rec.friends[0]}</span> and <span>{rec.friends[1]}</span></p>
+        <p className={styles.friends}>Taken by <span>{rec.friends[0]} and {rec.friends[1]}</span></p>
       );
     } else if (rec.friends.length === 1) {
       return (
