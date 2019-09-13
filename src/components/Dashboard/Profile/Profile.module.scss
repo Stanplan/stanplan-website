@@ -57,3 +57,16 @@
   color: $primary-color-action;
   text-decoration: underline;
 }
+
+.editButton {
+  width: 90%;
+  margin: 2% 5% 5% 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border: none;
+  background-color: $primary-color;
+}
+
+.editButton:hover {
+  background-color: $primary-color-action;
+}

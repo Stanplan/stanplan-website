@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import { getProfilePicture } from 'utils/ImageLoader';
 import styles from './Profile.module.scss';
@@ -167,6 +168,7 @@ class Profile extends Component {
             this.renderProfileFields()
           }
         </div>
+        <Button className={styles.editButton}>Edit profile</Button>
       </Card>
     );
   }
