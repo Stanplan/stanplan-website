@@ -11,7 +11,21 @@ class Post extends Component {
   }
 
   like() {
-
+    fetch(process.env.REACT_APP_SERVER_URL + "/like", {
+      method: 'post',
+      mode: 'cors',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        postUserID: this.props.owner,
+        postID: this.props.id
+      })
+    })
+    .catch(error => {
+      console.log('Error: Request to like failed', error)
+    });
   }
 
   render() {
@@ -27,7 +41,7 @@ class Post extends Component {
         </Card.Body>
         <Card.Footer className={styles.footer}>
           <ButtonGroup className={styles.engageButtonGroup}>
-            <Button className={styles.engageButton}>Like</Button>
+            <Button className={styles.engageButton} onClick={() => this.like()}>Like</Button>
             <Button className={styles.engageButton}>Comment</Button>
             <Button className={styles.engageButton}>Share</Button>
             <Button className={styles.engageButton}>Save</Button>

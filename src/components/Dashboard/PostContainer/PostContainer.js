@@ -10,15 +10,18 @@ class PostContainer extends Component {
     super(props);
 
     this.state = {
-      id: null,
-      firstName: "",
-      lastName: "",
-      picture: null,
       posts: [],
       lastDownloadTime: null
     };
 
     this.getPosts = this.getPosts.bind(this);
+  }
+
+  async addProfilePictures(posts) {
+    for (let i = 0; i < posts.length; i++) {
+      posts[i].picture = await getProfilePicture(posts[i].owner);
+    }
+    return posts;
   }
 
   getPosts() {
@@ -38,22 +41,16 @@ class PostContainer extends Component {
     .then(json => {
       if (json.posts.length > 0) {
         let posts = this.state.posts;
-        for (let i = 0; i < json.posts.length; i++) {
-          posts.push(json.posts[i]);
-        }
-
-        this.setState({
-          id: json.id,
-          firstName: json.firstName,
-          lastName: json.lastName,
-          posts: posts
+        this.addProfilePictures(json.posts)
+        .then(newPosts => {
+          for (let i = 0; i < newPosts.length; i++) {
+            posts.push(newPosts[i]);
+          }
+          this.setState({ posts: posts, lastDownloadTime: downloadTime });
         });
-
-        getProfilePicture(this.state.id).then(picture => {
-          this.setState({ picture: picture });
-        });
+      } else {
+        this.setState({ lastDownloadTime: downloadTime });
       }
-      this.setState({ lastDownloadTime: downloadTime });
     })
     .catch(error => {
       console.log('Error: Request for posts failed', error);
@@ -69,24 +66,26 @@ class PostContainer extends Component {
     this.timer = null;
   }
 
-  renderPost(id, name, picture, text, time) {
+  renderPost(id, owner, name, picture, text, time) {
     return (
       <Row className={styles.postRow}>
         <Col>
-          <Post id={id} person={name} picture={picture} text={text} time={time}/>
+          <Post id={id} owner={owner} person={name} picture={picture} text={text} time={time}/>
         </Col>
       </Row>
     );
   }
 
   renderPosts() {
-    let posts = [];
-    for (let i = this.state.posts.length - 1; i >= 0; i--) { // Reverse order so newer posts render at top
-      let id = this.state.id;
-      let name = this.state.firstName + " " + this.state.lastName;
-      let picture = this.state.picture;
-      let text = this.state.posts[i].text;
-      let date = new Date(this.state.posts[i].timestamp);
+    let { posts } = this.state;
+    let postComponents = [];
+    for (let i = posts.length - 1; i >= 0; i--) { // Reverse order so newer posts render at top
+      let id = posts[i].id;
+      let owner = posts[i].owner;
+      let name = posts[i].firstName + " " + posts[i].lastName;
+      let picture = posts[i].picture;
+      let text = posts[i].text;
+      let date = new Date(posts[i].timestamp);
 
       let now = new Date();
       let timeElapsed = now - date;
@@ -109,9 +108,9 @@ class PostContainer extends Component {
         date = date.toLocaleDateString('en-US', dateOptions);
       }
 
-      posts.push(this.renderPost(id, name, picture, text, date));
+      postComponents.push(this.renderPost(id, owner, name, picture, text, date));
     }
-    return posts;
+    return postComponents;
   }
 
   render() {
