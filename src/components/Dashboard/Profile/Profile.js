@@ -8,6 +8,7 @@ import Image from 'react-bootstrap/Image';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import EditField from './EditField';
+import EditArea from './EditArea';
 import { getProfilePicture } from 'utils/ImageLoader';
 import styles from './Profile.module.scss';
 
@@ -170,36 +171,6 @@ class Profile extends Component {
     return fields;
   }
 
-  modifyField(field, value) {
-    if (value === null) {
-      return;
-    }
-    this.setState({ [field]: value });
-  }
-
-  saveField(field, value) {
-    fetch(process.env.REACT_APP_SERVER_URL + "/updateprofile", {
-      method: "post",
-      mode: "cors",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        field: field,
-        value: value
-      })
-    })
-    .catch(error => {
-      console.log('Error: Request to update profile field failed', error);
-    });
-  }
-
-  updateBio(e) {
-    this.modifyField('bio', e.target.value);
-    this.saveField('bio', e.target.value);
-  }
-
   render() {
     let { showEditModal, name, bio, picture } = this.state;
     let { city, state, country, currentResidence, university, classYear, majors, minors, clubs, interests, jobs, website } = this.state;
@@ -224,10 +195,7 @@ class Profile extends Component {
             <Modal.Title>Edit profile</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form.Group controlId="bio">
-              <Form.Label>Bio</Form.Label>
-              <Form.Control as="textarea" rows="4" className={styles.bioEditField} value={bio} onChange={(e) => this.updateBio(e)}/>
-            </Form.Group>
+            <EditArea profileField='bio' label='Bio' value={bio}/>
             <p>About me</p>
             <div className={styles.profileFields}>
               <EditField profileField='city' icon='home' label='Home city' value={city}/>
