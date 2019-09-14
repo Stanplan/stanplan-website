@@ -5,6 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
+import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
 import { getProfilePicture } from 'utils/ImageLoader';
 import styles from './Profile.module.scss';
 
@@ -13,6 +15,7 @@ class Profile extends Component {
     super(props);
 
     this.state = {
+      showEditProfileModal: false,
       id: null,
       name: null,
       bio: null,
@@ -152,8 +155,55 @@ class Profile extends Component {
     return fields;
   }
 
+  showEditProfileModal() {
+    this.setState({ showEditProfileModal: true });
+  }
+
+  hideEditProfileModal() {
+    this.setState({ showEditProfileModal: false });
+  }
+
+  updateField(field, e) {
+    if (e.target.value === null) {
+      return;
+    }
+    this.setState({ [field]: e.target.value });
+
+    fetch(process.env.REACT_APP_SERVER_URL + "/updateprofile", {
+      method: "post",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        field: field,
+        value: e.target.value
+      })
+    })
+    .catch(error => {
+      console.log('Error: Request to update profile field failed', error);
+    });
+  }
+
+  renderSingleEditField(icon, label, field) {
+    return (
+      <Row className={styles.field}>
+        <Col sm={1}>
+          <i className={`material-icons-outlined`}>{icon}</i>
+        </Col>
+        <Col sm={10}>
+          <p>{label} <span className={styles.fieldEdit}>{field}</span></p>
+        </Col>
+        <Col sm={1}>
+          <p className={styles.editFieldButton}>Edit</p>
+        </Col>
+      </Row>
+    );
+  }
+
   render() {
-    let { name, bio, picture } = this.state;
+    let { showEditProfileModal, name, bio, picture, university, classYear, majors, minors, clubs, interests, hometown, currentResidence, jobs, website } = this.state;
     return (
       <Card className={styles.card}>
         <div className={styles.topArea}>
@@ -168,7 +218,26 @@ class Profile extends Component {
             this.renderProfileFields()
           }
         </div>
-        <Button className={styles.editButton}>Edit profile</Button>
+        <Button className={styles.editProfileButton} onClick={() => this.showEditProfileModal()}>Edit profile</Button>
+
+        <Modal show={showEditProfileModal} onHide={() => this.hideEditProfileModal()} animation={false}>
+          <Modal.Header closeButton>
+            <Modal.Title>Edit profile</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form.Group controlId="bio">
+              <Form.Label>Bio</Form.Label>
+              <Form.Control as="textarea" rows="4" className={styles.bioEditField} value={bio} onChange={(e) => this.updateField('bio', e)}/>
+            </Form.Group>
+            <p>About me</p>
+            <div className={styles.profileFields}>
+              { this.renderSingleEditField('home', 'Hometown', hometown) }
+              { this.renderSingleEditField('home', 'Current residence', currentResidence) }
+              { this.renderSingleEditField('school', 'University', university) }
+              { this.renderSingleEditField('school', 'Class year', classYear) }
+            </div>
+          </Modal.Body>
+        </Modal>
       </Card>
     );
   }

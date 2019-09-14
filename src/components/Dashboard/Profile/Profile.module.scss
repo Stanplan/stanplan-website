@@ -58,7 +58,7 @@
   text-decoration: underline;
 }
 
-.editButton {
+.editProfileButton {
   width: 90%;
   margin: 2% 5% 5% 5%;
   padding-top: 2%;
@@ -67,6 +67,26 @@
   background-color: $primary-color;
 }
 
-.editButton:hover {
+.editProfileButton:hover {
   background-color: $primary-color-action;
+}
+
+.bioEditField {
+  resize: none;
+}
+
+.fieldEdit {
+  float: right;
+  font-weight: bold;
+}
+
+.editFieldButton {
+  font-size: 10pt;
+  color: $primary-color;
+  cursor: pointer;
+}
+
+.editFieldButton:hover {
+  color: $primary-color-action;
+  text-decoration: underline;
 }
