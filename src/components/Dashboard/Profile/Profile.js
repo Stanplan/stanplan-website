@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import EditField from './EditField';
 import { getProfilePicture } from 'utils/ImageLoader';
 import styles from './Profile.module.scss';
 
@@ -15,7 +16,7 @@ class Profile extends Component {
     super(props);
 
     this.state = {
-      showEditProfileModal: false,
+      showEditModal: false,
       id: null,
       name: null,
       bio: null,
@@ -26,19 +27,33 @@ class Profile extends Component {
       minors: [],
       clubs: [],
       interests: [],
-      hometown: null,
+      city: null,
+      state: null,
+      country: null,
       currentResidence: null,
       jobs: [],
       website: null
     }
+
+    this.updateData = this.updateData.bind(this);
+    this.updatePicture = this.updatePicture.bind(this);
   }
 
   componentDidMount() {
-    this.getProfileData();
+    this.updateData().then(() => {
+      this.updatePicture();
+    });
+    this.timerData = setInterval(this.updateData, 1000);
+    this.timerPicture = setInterval(this.updatePicture, 60000);
   }
 
-  getProfileData() {
-    fetch(process.env.REACT_APP_SERVER_URL + "/profile", {
+  componentWillUnmount() {
+    this.timerData = null;
+    this.timerPicture = null;
+  }
+
+  async updateData() {
+    await fetch(process.env.REACT_APP_SERVER_URL + "/profile", {
       method: "get",
       mode: "cors",
       credentials: "include",
@@ -56,34 +71,30 @@ class Profile extends Component {
         id: json.id,
         name: json.name,
         bio: bio,
+        city: json.city,
+        state: json.state,
+        country: json.country,
+        currentResidence: json.currentResidence,
         university: json.university,
         classYear: json.classYear,
         majors: json.majors,
         minors: json.minors,
         clubs: json.clubs,
         interests: json.interests,
-        hometown: json.hometown,
-        currentResidence: json.currentResidence,
         jobs: json.jobs,
         website: json.website
       });
-
-      getProfilePicture(this.state.id).then(picture => {
-        this.setState({ picture: picture });
-      });
     })
     .catch(error => {
-      console.log('Error: Request for posts failed', error);
+      console.log('Error: Request for profile data failed', error);
     });
   }
 
-  renderText(text, link=false) {
-    if (link) {
-      return (
-        <a className={styles.link} href={text}>{text}</a>
-      );
-    }
-    return text;
+  updatePicture() {
+    if (this.state.id === null) return;
+    getProfilePicture(this.state.id).then(picture => {
+      this.setState({ picture: picture });
+    });
   }
 
   renderField(icon, text, link=false) {
@@ -93,19 +104,23 @@ class Profile extends Component {
           <i className={`material-icons-outlined`}>{icon}</i>
         </Col>
         <Col sm={11}>
-          {
-            this.renderText(text, link)
-          }
+          { link ? (<a className={styles.link} href={text}>{text}</a>) : text }
         </Col>
       </Row>
     );
   }
 
-  renderProfileFields() {
-    let { university, classYear, majors, minors, clubs, interests, hometown, currentResidence, jobs, website } = this.state;
+  renderFields() {
+    let { university, classYear, majors, minors, clubs, interests, city, state, country, currentResidence, jobs, website } = this.state;
     let fields = [];
-    if (hometown !== null && hometown !== undefined) {
-      fields.push(this.renderField('home', `From ${hometown}`));
+    if (city !== null && city !== undefined) {
+      let fromField = `From ${city}`;
+      if (country === "United States" && state !== null && state !== undefined) {
+        fromField += `, ${state}`;
+      } else if (country !== null && country !== undefined) {
+        fromField += `, ${country}`;
+      }
+      fields.push(this.renderField('home', fromField));
     }
     if (currentResidence !== null && currentResidence !== undefined) {
       fields.push(this.renderField('home', `Currently lives in ${currentResidence}`));
@@ -155,20 +170,14 @@ class Profile extends Component {
     return fields;
   }
 
-  showEditProfileModal() {
-    this.setState({ showEditProfileModal: true });
-  }
-
-  hideEditProfileModal() {
-    this.setState({ showEditProfileModal: false });
-  }
-
-  updateField(field, e) {
-    if (e.target.value === null) {
+  modifyField(field, value) {
+    if (value === null) {
       return;
     }
-    this.setState({ [field]: e.target.value });
+    this.setState({ [field]: value });
+  }
 
+  saveField(field, value) {
     fetch(process.env.REACT_APP_SERVER_URL + "/updateprofile", {
       method: "post",
       mode: "cors",
@@ -178,7 +187,7 @@ class Profile extends Component {
       },
       body: JSON.stringify({
         field: field,
-        value: e.target.value
+        value: value
       })
     })
     .catch(error => {
@@ -186,24 +195,14 @@ class Profile extends Component {
     });
   }
 
-  renderSingleEditField(icon, label, field) {
-    return (
-      <Row className={styles.field}>
-        <Col sm={1}>
-          <i className={`material-icons-outlined`}>{icon}</i>
-        </Col>
-        <Col sm={10}>
-          <p>{label} <span className={styles.fieldEdit}>{field}</span></p>
-        </Col>
-        <Col sm={1}>
-          <p className={styles.editFieldButton}>Edit</p>
-        </Col>
-      </Row>
-    );
+  updateBio(e) {
+    this.modifyField('bio', e.target.value);
+    this.saveField('bio', e.target.value);
   }
 
   render() {
-    let { showEditProfileModal, name, bio, picture, university, classYear, majors, minors, clubs, interests, hometown, currentResidence, jobs, website } = this.state;
+    let { showEditModal, name, bio, picture } = this.state;
+    let { city, state, country, currentResidence, university, classYear, majors, minors, clubs, interests, jobs, website } = this.state;
     return (
       <Card className={styles.card}>
         <div className={styles.topArea}>
@@ -215,26 +214,27 @@ class Profile extends Component {
         </div>
         <div className={styles.profileFields}>
           {
-            this.renderProfileFields()
+            this.renderFields()
           }
         </div>
-        <Button className={styles.editProfileButton} onClick={() => this.showEditProfileModal()}>Edit profile</Button>
+        <Button className={styles.editProfileButton} onClick={() => this.setState({ showEditModal: true })}>Edit profile</Button>
 
-        <Modal show={showEditProfileModal} onHide={() => this.hideEditProfileModal()} animation={false}>
+        <Modal show={showEditModal} onHide={() => this.setState({ showEditModal: false })} animation={false}>
           <Modal.Header closeButton>
             <Modal.Title>Edit profile</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form.Group controlId="bio">
               <Form.Label>Bio</Form.Label>
-              <Form.Control as="textarea" rows="4" className={styles.bioEditField} value={bio} onChange={(e) => this.updateField('bio', e)}/>
+              <Form.Control as="textarea" rows="4" className={styles.bioEditField} value={bio} onChange={(e) => this.updateBio(e)}/>
             </Form.Group>
             <p>About me</p>
             <div className={styles.profileFields}>
-              { this.renderSingleEditField('home', 'Hometown', hometown) }
-              { this.renderSingleEditField('home', 'Current residence', currentResidence) }
-              { this.renderSingleEditField('school', 'University', university) }
-              { this.renderSingleEditField('school', 'Class year', classYear) }
+              <EditField profileField='city' icon='home' label='Home city' value={city}/>
+              <EditField profileField='state' icon='home' label='Home state' value={state}/>
+              <EditField profileField='country' icon='home' label='Home country' value={country}/>
+              <EditField profileField='currentResidence' icon='home' label='Current dorm/apt.' value={currentResidence}/>
+              <EditField profileField='classYear' icon='school' label='Class year' value={classYear}/>
             </div>
           </Modal.Body>
         </Modal>

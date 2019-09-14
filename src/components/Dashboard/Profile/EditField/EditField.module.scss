@@ -1,0 +1,27 @@
+@import 'assets/styles/variables.scss';
+
+.row {
+  font-size: 11pt;
+  margin-bottom: 0.6rem;
+}
+
+.value {
+  float: right;
+  font-weight: bold;
+}
+
+.editButton {
+  font-size: 10pt;
+  color: $primary-color;
+  cursor: pointer;
+}
+
+.editButton:hover {
+  color: $primary-color-action;
+  text-decoration: underline;
+}
+
+.editTextField {
+  float: right;
+  height: 2rem;
+}

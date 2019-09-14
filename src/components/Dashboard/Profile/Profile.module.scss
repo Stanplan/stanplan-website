@@ -75,7 +75,7 @@
   resize: none;
 }
 
-.fieldEdit {
+.currentFieldText {
   float: right;
   font-weight: bold;
 }
@@ -89,4 +89,9 @@
 .editFieldButton:hover {
   color: $primary-color-action;
   text-decoration: underline;
+}
+
+.editField {
+  float: right;
+  height: 2rem;
 }
